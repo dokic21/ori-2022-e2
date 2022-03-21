@@ -76,7 +76,7 @@ class State(object):
         pass
     
     @abstractmethod
-    def get_cost(self):
+    def get_cost(self): #po heuristici
         """
         Apstraktna metoda koja treba da vrati procenu cene
         (vrednost heuristicke funkcije) za ovo stanje.
@@ -86,7 +86,7 @@ class State(object):
         pass
     
     @abstractmethod
-    def get_current_cost(self):
+    def get_current_cost(self): #cena
         """
         Apstraktna metoda koja treba da vrati stvarnu trenutnu cenu za ovo stanje.
         Koristi se za vodjene pretrage.
@@ -128,3 +128,12 @@ class RobotState(State):
 
     def unique_hash(self):
         return str(self.position)
+
+    def get_cost(self):
+        p1 = self.position
+        p2 = self.goal_position
+
+        return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
+
+    def get_current_cost(self):
+        return self.depth

@@ -166,13 +166,13 @@ path = None
 
 
 # funkcija koja se poziva na dugme SEARCH
-def do_search():
+def do_search(): #najbitnija 
     global processed, path
     reset()
     # koju strategiju pretrage koristiti
-    search = BreadthFirstSearch(board)
+    search = BreadthFirstSearch(board) #instancira neki nas search i to BFS, mi treba ostalo da implementiramo
     # kog "agenta" koristiti
-    initial_state = RobotState
+    initial_state = RobotState #klasa, nije instanca klase
 
     # pokreni pretragu, meri vreme izvrsavanja
     start = time.perf_counter()
@@ -238,7 +238,7 @@ board = Board(rows=rows, cols=cols)
 grid_elem_ids = [[[]] * cols for _ in range(rows)]
 grid_text_ids = [[[]] * cols for _ in range(rows)]
 
-# mapiranje sadrzaja table na boju celije
+# mapiranje sadrzaja table na boju celije, OVO MENJAMO
 board_to_colors = {'.': 'white',
                    'w': 'gray',
                    'g': 'orangered'}
